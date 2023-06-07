@@ -6,9 +6,9 @@ public class GoLogger {
 
     public static void init () {
 
-        bridge.Bridge.init();
+        librsyncbridge.Librsyncbridge.init();
         Log.i("librsync", "Initialized golang logger");
-        bridge.Bridge.addLogger(new bridge.Logger() {
+        librsyncbridge.Librsyncbridge.addLogger(new librsyncbridge.Logger() {
             @Override
             public void d(String tag, String msg) {
                 Log.d(tag, msg);

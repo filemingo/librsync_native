@@ -8,13 +8,13 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 
-import bridge.Stream;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
+import librsyncbridge.Stream;
 
 /** LibrsyncNativePlugin */
 public class LibrsyncNativePlugin implements FlutterPlugin, MethodCallHandler {
@@ -64,7 +64,7 @@ public class LibrsyncNativePlugin implements FlutterPlugin, MethodCallHandler {
       final String streamID = call.argument("streamID");
       
       EventChannel eventChannel = eventChannelMap.get(streamID);
-      bridge.Stream stream = new Stream() {
+      librsyncbridge.Stream stream = new Stream() {
         @Override
         public void send(byte[] bytes, long l) {
           EventChannel.EventSink sink = eventSinkMap.get(streamID);
@@ -76,7 +76,7 @@ public class LibrsyncNativePlugin implements FlutterPlugin, MethodCallHandler {
           }
         }
       };
-      bridge.Bridge.computeDelta(signatureStr, targetPath, stream);
+      librsyncbridge.Librsyncbridge.computeDelta(signatureStr, targetPath, stream);
       // TODO: Maybe close the streams?
       eventChannelMap.remove(streamID);
       eventSinkMap.remove(streamID);

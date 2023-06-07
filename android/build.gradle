@@ -54,6 +54,6 @@ android {
 }
 
 dependencies {
-//    api(name: 'librsyncbridge', ext: 'aar')
-    implementation (name: 'librsyncbridge', ext: 'aar')
+    api(name: 'librsyncbridge', ext: 'aar')
+//    implementation (name: 'librsyncbridge', ext: 'aar')
 }
